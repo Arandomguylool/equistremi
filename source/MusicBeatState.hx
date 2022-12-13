@@ -20,6 +20,7 @@ import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
 import mobile.MobileControls;
 import mobile.flixel.FlxVirtualPad;
+import android.flixel.FlxHitbox.Modes;
 #end
 
 class MusicBeatState extends FlxUIState
