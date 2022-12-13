@@ -22,7 +22,7 @@ class OptionsMenu extends MusicBeatState
 
 	var options:Array<OptionCatagory> = [
 		new OptionCatagory("Gameplay", [
-                        new gradientHitboxes("if unchecked, hitboxes for mechanics would be at the top instead of bottom"),
+                        new GradientHitboxes("if unchecked, hitboxes for mechanics would be at the top instead of bottom"),
 			new DFJKOption(controls),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
 			new FPSCapOption("Cap your FPS (Left for -10, Right for +10. SHIFT to go faster)"),
