@@ -47,15 +47,7 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			if(!(data[0]=='Extermination') && !(data[0]=='Cessation') && !(data[0]=='Expurgation')){ //Add everything to the song list which isn't Extermination, Cessation and Expurgation.
-				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
-			}
-			else if(FlxG.save.data.terminationUnlocked && data[0]=='Extermination') //If the list picks up Termination, check if its unlocked before adding.
-				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
-			else if(FlxG.save.data.terminationBeaten && data[0]=='Cessation') //If the list picks up Cessation, check if its unlocked before adding.
-				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
-			else if(FlxG.save.data.cessationBeaten && data[0]=='Expurgation') //If the list picks up Expurgation, check if its unlocked before adding.
-				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
+			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
 		/* 
@@ -129,17 +121,13 @@ class FreeplayState extends MusicBeatState
 	
 		messageBG = new FlxSprite(messageText.x -35, 75).makeGraphic(Std.int(FlxG.width * 0.35), 236, 0xFF000000);
 		messageBG.alpha = 0.6;
-		add(messageBG);
+		//add(messageBG);
 
 		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
 		add(diffText);
 
 		add(scoreText);
-		add(messageText);
-		add(messageText2);
-		add(messageText3);
-		add(messageText4);
 
 		changeSelection();
 		changeDiff();
@@ -214,22 +202,6 @@ class FreeplayState extends MusicBeatState
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
-		if(songs[curSelected].songName.toLowerCase()=="censory-superload" && !(FlxG.save.data.terminationUnlocked)){
-			messageText.visible = true;
-			messageText2.visible = true;
-			messageText3.visible = true;
-			messageText4.visible = true;
-			messageBG.visible = true;
-		}
-		
-		if(!(songs[curSelected].songName.toLowerCase()=="censory-superload")){
-			messageText.visible = false;
-			messageText2.visible = false;
-			messageText3.visible = false;
-			messageText4.visible = false;
-			messageBG.visible = false;
-		}
-
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
 		var accepted = controls.ACCEPT;
@@ -257,17 +229,6 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{
-			if((songs[curSelected].songName.toLowerCase()=='extermination') && !(FlxG.save.data.terminationUnlocked)){
-				trace("lmao, access denied idiot!");
-			}
-			else if((songs[curSelected].songName.toLowerCase()=='cessation') && !(FlxG.save.data.terminationBeaten)){
-				trace("lmao, access denied idiot! Prove yourself first mortal.");
-			}
-			else if((songs[curSelected].songName.toLowerCase()=='expurgation') && !(FlxG.save.data.cessationBeaten)){
-				trace("lmao, access denied idiot! Prove yourself first mortal and... aren't you forgetting to pass a song?");
-			}
-			else
-			{
 				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
 				trace(poop);
@@ -278,7 +239,6 @@ class FreeplayState extends MusicBeatState
 				PlayState.storyWeek = songs[curSelected].week;
 				trace('CUR WEEK' + PlayState.storyWeek);
 				LoadingState.loadAndSwitchState(new PlayState());
-			}
 		}
 	}
 
@@ -287,10 +247,7 @@ class FreeplayState extends MusicBeatState
 		if(songs[curSelected].songName.toLowerCase()=="extermination")
 		{
 			curDifficulty = 2; //Force it to hard difficulty.
-			if(FlxG.save.data.terminationUnlocked)
-				diffText.text = "EXTREME";
-			else
-				diffText.text = "LOCKED";
+			diffText.text = "EXTREME";L
 			#if !switch
 			intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 			#end
@@ -308,10 +265,7 @@ class FreeplayState extends MusicBeatState
 		else if(songs[curSelected].songName.toLowerCase()=="cessation")
 		{
 			curDifficulty = 1; //Force it to normal difficulty.
-			if(FlxG.save.data.terminationBeaten)
-				diffText.text = "HARD?";
-			else
-				diffText.text = "LOCKED";
+			diffText.text = "HARD?";
 			#if !switch
 			intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 			#end
@@ -319,10 +273,7 @@ class FreeplayState extends MusicBeatState
 		else if(songs[curSelected].songName.toLowerCase()=="expurgation")
 			{
 				curDifficulty = 2; //Force it to hard difficulty.
-				if(FlxG.save.data.cessationBeaten)
-					diffText.text = "VERY HARD? IDK";
-				else
-					diffText.text = "LOCKED";
+				diffText.text = "VERY HARD? IDK";
 				#if !switch
 				intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 				#end
