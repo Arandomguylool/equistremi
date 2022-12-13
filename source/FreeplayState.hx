@@ -247,7 +247,7 @@ class FreeplayState extends MusicBeatState
 		if(songs[curSelected].songName.toLowerCase()=="extermination")
 		{
 			curDifficulty = 2; //Force it to hard difficulty.
-			diffText.text = "EXTREME";L
+			diffText.text = "EXTREME";
 			#if !switch
 			intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 			#end
@@ -359,10 +359,6 @@ class FreeplayState extends MusicBeatState
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		// lerpScore = 0;
-		#end
-
-		#if PRELOAD_ALL
-		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
 		#end
 
 		var bullShit:Int = 0;
