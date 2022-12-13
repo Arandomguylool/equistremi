@@ -121,7 +121,7 @@ class CpuStrums extends Option
 
 }
 
-class gradientHitboxes extends Option
+class GradientHitboxes extends Option
 {
 	public function new(desc:String)
 	{
