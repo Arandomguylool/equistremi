@@ -131,7 +131,7 @@ class GradientHitboxes extends Option
 
 	public override function press():Bool
 	{
-		FlxG.save.data.gradientHitboxes = !FlxG.save.data.gradientHitboxes;
+		FlxG.save.data.mechsInputVariants = !FlxG.save.data.mechsInputVariants;
 		
 		display = updateDisplay();
 		return true;
@@ -139,7 +139,7 @@ class GradientHitboxes extends Option
 
 	private override function updateDisplay():String
 	{
-		return  FlxG.save.data.gradientHitboxes ? "Hitbox Pose DOWN" : "Hitbox Pose UP";
+		return  FlxG.save.data.mechsInputVariants ? "Hitbox Pose DOWN" : "Hitbox Pose UP";
 	}
 
 }
