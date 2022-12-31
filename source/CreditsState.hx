@@ -25,6 +25,8 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
+                ['Android Port'],
+                ['Boyfriend FNF', 'bruh' 'I think I will change my channel\nname to idklool', 'https://youtube.com/@BoyfriendFNF', FFFFFFF],
 		['QT Mod Extreme Devs'],
 		['DrkFon376',			'drkfon',			'Main Developer, Programmer and All New Stuff',		'https://www.youtube.com/channel/UCCVTns4b43V8Q5EON8xuSUQ',	0xFF0A408A],
 		['Marshal',				'marshal',			'Help with Some New Animations and Art',			'https://twitter.com/Marshal_H1',			0xFF01C7A6],
